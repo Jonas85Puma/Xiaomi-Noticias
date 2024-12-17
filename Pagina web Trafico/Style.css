@@ -1,0 +1,591 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;800&display=swap');
+
+:root {
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --primary-color: #ff6347; /* Tomate */
+    --secondary-color: #555; /* Gris oscuro */
+    --footer-background-color: #f1f1f1;
+    --footer-text-color: #333;
+    --section-background-color: rgba(0, 0, 0, 0); /* Color de fondo con transparencia */
+    --section-background-color-dark: rgba(18, 18, 18, 0.8); /* Color de fondo con transparencia para modo oscuro */
+}
+
+body.dark-mode {
+    --background-color: #121212; /* Gris oscuro para modo oscuro */
+    --text-color: #e0e0e0; /* Gris claro para texto en modo oscuro */
+    --footer-background-color: rgba(18, 18, 18, 0.8); /* Gris oscuro con transparencia para modo oscuro */
+    --footer-text-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 320px;
+    position: relative;
+    overflow-x: hidden; /* Evita el deslizamiento horizontal */
+}
+
+body::before {
+    content: "";
+    position: fixed; /* Cambiado a fixed para que la imagen sea estática */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/IMG/Logo.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Ajusta el valor para cambiar el nivel de desenfoque */
+    z-index: -1;
+    opacity: 0.2; /* Ajusta la opacidad según sea necesario */
+    background-color: var(--section-background-color); /* Color de fondo con transparencia */
+}
+
+body.dark-mode::before {
+    background-image: url('/IMG/Logo.jpg'); /* Reemplaza con la ruta de tu imagen */
+    filter: blur(8px); /* Ajusta el valor para cambiar el nivel de desenfoque */
+    opacity: 0.5; /* Ajusta la opacidad según sea necesario */
+    background-color: var(--section-background-color-dark); /* Color de fondo con transparencia para modo oscuro */
+}
+
+header, footer, .container {
+    width: 100%;
+}
+
+header, footer {
+    background-color: var(--section-background-color); /* Color de fondo con transparencia */
+}
+
+body.dark-mode header, body.dark-mode footer {
+    background-color: var(--section-background-color-dark); /* Color de fondo con transparencia para modo oscuro */
+}
+
+header {
+    position: relative; /* Cambiado a relative para que el header no sea fijo */
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+    background-color: var(--background-color); /* Elimina la transparencia */
+}
+
+body.dark-mode header {
+    background-color: var(--background-color); /* Elimina la transparencia en modo oscuro */
+}
+
+header section {
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1500px; /* Limita el ancho máximo de la página */
+    padding: 0 1rem; /* Añade padding para mantener márgenes */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem; /* Añade margen superior para evitar que el contenido se superponga con el header */
+    max-width: 3000px; /* Limita el ancho máximo del main */
+    width: 100%; /* Asegura que el main ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+section {
+    background-color: var(--section-background-color); /* Color de fondo con transparencia */
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto; /* Permite que las tablas sean responsivas */
+}
+
+body.dark-mode section {
+    background-color: var(--section-background-color-dark); /* Color de fondo con transparencia para modo oscuro */
+}
+
+section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+section h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+section h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+section p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+section ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+section ul li {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    background-color: var(--footer-background-color);
+    color: var(--footer-text-color);
+    position: relative;
+    margin-top: auto;
+}
+
+#toggle-dark-mode {
+    position: fixed;
+    bottom: 8px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#toggle-dark-mode:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark-mode #toggle-dark-mode {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode #toggle-dark-mode:hover {
+    color: black;
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 1200px) {
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0 0.5rem; /* Ajusta el padding en pantallas medianas */
+    }
+    header h1 {
+        font-size: 1.75rem;
+    }
+    header p {
+        font-size: 1.1rem;
+    }
+    section h2 {
+        font-size: 1.5rem;
+    }
+    section h3 {
+        font-size: 1.25rem;
+    }
+    section h4 {
+        font-size: 1.1rem;
+    }
+    section h5 {
+        font-size: 1rem;
+    }
+    section p, section ul li {
+        font-size: 0.9rem;
+    }
+    table th, table td {
+        font-size: 0.9rem; /* Ajusta el tamaño de la fuente en las tablas */
+    }
+}
+
+@media (max-width: 768px) {
+
+    footer {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    #toggle-dark-mode {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 0; /* Elimina el padding en pantallas pequeñas */
+    }
+    main {
+        width: 100%; /* Asegura que el main ocupe todo el ancho disponible */
+    }
+    section {
+        padding: 1rem; /* Ajusta el padding para pantallas pequeñas */
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+    section h2 {
+        font-size: 1.25rem;
+    }
+    section h3 {
+        font-size: 1.1rem;
+    }
+    section h4 {
+        font-size: 1rem;
+    }
+    section h5 {
+        font-size: 0.9rem;
+    }
+    section p, section ul li {
+        font-size: 0.8rem;
+    }
+    table th, table td {
+        font-size: 0.8rem; /* Ajusta el tamaño de la fuente en las tablas */
+    }
+}
+
+@media (max-width: 576px) {
+
+    footer {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+    #toggle-dark-mode {
+        bottom: 12px;
+        right: 12px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    header h1 {
+        font-size: 1.25rem;
+    }
+    header p {
+        font-size: 0.9rem;
+    }
+    main {
+        margin-top: 1rem; /* Ajusta el margen superior para evitar que el contenido se superponga con el header */
+        padding: 0; /* Elimina el padding */
+    }
+    .container {
+        padding: 0; /* Elimina el padding */
+    }
+    section {
+        padding: 0.5rem; /* Ajusta el padding para pantallas muy pequeñas */
+    }
+    section h2 {
+        font-size: 1rem;
+    }
+    section h3 {
+        font-size: 0.9rem;
+    }
+    section h4 {
+        font-size: 0.8rem;
+    }
+    section h5 {
+        font-size: 0.75rem;
+    }
+    section p, section ul li {
+        font-size: 0.7rem;
+    }
+    table th, table td {
+        font-size: 0.7rem; /* Ajusta el tamaño de la fuente en las tablas */
+    }
+}
+
+/* DataTables Custom Styles */
+.dataTables_wrapper {
+    margin: 2rem 0;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    background-color: var(--primary-color);
+    color: #fff !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: var(--secondary-color);
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    padding: 0.5rem;
+    border: 1px solid var (--secondary-color);
+    border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_info {
+    display: none;
+}
+
+/* Estilos para modo noche */
+body.dark-mode .dataTables_wrapper {
+    color: #ffffff;
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: var(--secondary-color);
+    color: #fff !important;
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: var(--primary-color);
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_filter input {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode .dataTables_wrapper .dataTables_length select {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-mode table {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode table th, 
+body.dark-mode table td {
+    background-color: #333 !important;
+    border: 1px solid #555;
+    color: #fff !important;
+}
+
+body.dark-mode table tr:nth-child(even) {
+    background-color: #444 !important;
+}
+
+body.dark-mode table tr:nth-child(odd) {
+    background-color: #333 !important;
+}
+
+/* Responsive Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+@media (max-width: 992px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+/* Estilos generales */
+.device-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.device {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 150px; /* Ajusta el tamaño según sea necesario */
+    height: 200px; /* Ajusta el tamaño según sea necesario */
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 8px; /* Añade bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra */
+    background-color: #f0f0f0; /* Color de fondo por defecto */
+    padding: 1px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para el efecto hover */
+}
+
+.device img {
+    max-width: 90%; /* Ajusta el tamaño para que no ocupe el 100% del contenedor */
+    max-height: 90%; /* Ajusta el tamaño para que no ocupe el 100% del contenedor */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
+    transition: transform 0.3s ease; /* Transición para el efecto hover */
+    padding-top: 25px;
+}
+
+.device p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo difuminado */
+    color: #fff;
+    padding: 0.5rem;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease; /* Transición para el efecto hover */
+}
+
+.device::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5)); /* Simula el efecto de color difuminado */
+    filter: blur(15px); /* Difumina el fondo */
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+}
+
+.device:hover {
+    transform: scale(1.1); /* Agranda el contenedor al pasar el cursor */
+}
+
+.device:hover p {
+    background: rgba(0, 0, 0, 0.7); /* Cambia el fondo al pasar el cursor */
+}
+
+a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: inherit; /* Hereda el color del texto */
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .device {
+    background-color: #333; /* Color de fondo para el modo oscuro */
+    color: #fff; /* Color de texto para el modo oscuro */
+}
+
+body.dark-mode .device p {
+    background: rgba(255, 255, 255, 0.5); /* Fondo difuminado para el modo oscuro */
+    color: #000; /* Color de texto para el modo oscuro */
+}
+
+@media (max-width: 768px) {
+    .device {
+        width: 100px; /* Ajusta el tamaño para pantallas pequeñas */
+        height: 150px; /* Ajusta el tamaño para pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    .device {
+        width: 80px; /* Ajusta el tamaño para pantallas muy pequeñas */
+        height: 120px; /* Ajusta el tamaño para pantallas muy pequeñas */
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+aside.adsense-left, aside.adsense-right {
+    width: 160px; /* Ajusta el ancho según sea necesario */
+    margin: 0 10px; /* Ajusta el margen según sea necesario */
+}
+
+main {
+    flex: 1;
+    margin: 0 20px; /* Ajusta el margen según sea necesario */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+    }
+
+    aside.adsense-left, aside.adsense-right {
+        width: 100%; /* Haz que los asides ocupen el 100% del ancho */
+        margin: 10px 0; /* Ajusta el margen para pantallas pequeñas */
+    }
+
+    main {
+        margin: auto; /* Elimina el margen en pantallas pequeñas */
+    }
+}
